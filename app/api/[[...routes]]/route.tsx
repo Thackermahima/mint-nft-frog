@@ -2,7 +2,7 @@
 
 import { Button, Frog } from 'frog'
 import { handle } from 'frog/vercel'
-import contractAbi from './contract.json'
+import {contractAbi} from './contractABI'
 
 const app = new Frog({
   basePath: '/api',
@@ -26,12 +26,12 @@ app.frame('/finish', (c) => {
   })
 })
  
-app.transaction('/mint', (c: any) => {
+app.transaction('/mint', (c) => {
   return c.contract({
-    abi: contractAbi.output.abi,
+    abi: contractAbi,
     chainId: 'eip155:84532',
     functionName: 'mint',
-    to: '0x1a5516BeDB0CaAB297c8cecaBdFe96325469EF2d',
+    to: '0x378b1C76B44608EcC3fB00744A49e3B85Aee6a67',
   })
 })
 
